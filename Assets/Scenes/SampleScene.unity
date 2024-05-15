@@ -1655,7 +1655,7 @@ GameObject:
   - component: {fileID: 1267590251}
   m_Layer: 0
   m_Name: Mogura (6)
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2025,7 +2025,7 @@ GameObject:
   - component: {fileID: 1770227709}
   m_Layer: 0
   m_Name: Controller
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,6 +2067,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSpeed: 5
+  maxAmplitude: 3
+  lowestAmplitude: -3
   point: 0
   score: {fileID: 1469544146}
 --- !u!1 &1914962131
