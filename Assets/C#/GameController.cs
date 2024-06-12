@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
         transform.position = newPosition;
 
          // Targetの物だけ反応
-        if (Input.GetMouseButtonDown(0) && !hit) // モグラが叩かれていない場合にのみ反応
+        if (Input.GetMouseButtonDown(0) && !hit)
         {
             Vector3 mousePos = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -40,9 +40,8 @@ public class GameController : MonoBehaviour
             {
                 if (hitInfo.collider.CompareTag("Target"))
                 {
-                    // モグラを叩いたらスコアを加算し、モグラが引っ込むまで再度叩けないようにする
                     AddPoints(pointValue);
-                    hit = true; // モグラが叩かれたことを示すフラグを立てる
+                    hit = true;
                 }
             }
         }
