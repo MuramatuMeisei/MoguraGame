@@ -2066,11 +2066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcea83ee4cab98418c11ed7e02438c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpeed: 5
-  maxAmplitude: 3
-  lowestAmplitude: -3
-  point: 0
-  score: {fileID: 1469544146}
+  pointValue: 10
+  textPoint: {fileID: 1469544146}
 --- !u!1 &1914962131
 GameObject:
   m_ObjectHideFlags: 0

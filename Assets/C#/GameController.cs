@@ -5,32 +5,46 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public float targetSpeed = 5.0f;
-    public float maxAmplitude = 3.0f;
-    public float lowestAmplitude = -3.0f;
-    public int point = 0;
-    public Text score;
+    private int points = 0;
+
+    public int pointValue = 10;
+    public Text textPoint;
 
     private void Start()
     {
-        score.text = "Score:" + point;
+        UpdatePointsText();
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ScorePoint();
-        }
+            Vector3 mousePos = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        score.text = "Score:" + point;
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.CompareTag("Target"))
+                {
+                    AddPoints(pointValue);
+                }
+            }
+        }
     }
 
-    void ScorePoint()
+    private void AddPoints(int amount)
     {
-        if(gameObject.CompareTag("Target"))
+        points += amount;
+        UpdatePointsText();
+    }
+
+    private void UpdatePointsText()
+    {
+        if(textPoint != null)
         {
-            point += 1;
+            textPoint.text = "Point:" + points;
         }
     }
 }
