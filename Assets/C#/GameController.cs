@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
-    public float amplitude = 1.0f;
-    private float positionY;
     private bool hit = false;
 
     public int pointValue = 10;
@@ -17,17 +14,10 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         UpdatePointsText();
-        positionY = transform.position.y;
     }
 
     private void Update()
     {
-        //ƒ‚ƒOƒ‰‚Ì“®‚«
-        float yOffSet = Mathf.Sin(Time.time * moveSpeed) * amplitude;
-        Vector3 newPosition = transform.position;
-        newPosition.y = positionY + yOffSet;
-        transform.position = newPosition;
-
          // Target‚Ì•¨‚¾‚¯”½‰ž
         if (Input.GetMouseButtonDown(0) && !hit)
         {
