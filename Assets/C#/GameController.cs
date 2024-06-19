@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    private float clickCoolTime = 1f;
+    private float lastClickTime = 0f;
     private bool hit = false;
 
     public int pointValue = 10;
@@ -18,7 +20,14 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-         // Targetの物だけ反応
+        if (Time.time - lastClickTime < clickCoolTime)
+        {
+            return;
+        }
+
+        hit = false;
+
+        // Targetの物だけ反応
         if (Input.GetMouseButtonDown(0) && !hit)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -32,24 +41,25 @@ public class GameController : MonoBehaviour
                 {
                     AddPoints(pointValue);
                     hit = true;
+                    lastClickTime = Time.time;
                 }
             }
         }
     }
 
-    //点数を加算
+    // 点数を加算するメソッド
     private void AddPoints(int amount)
     {
         points += amount;
         UpdatePointsText();
     }
-    
-    //UIにScoreを表示、UIの数字を更新
+
+    // UIにスコアを表示するメソッド
     private void UpdatePointsText()
     {
-        if(textPoint != null)
+        if (textPoint != null)
         {
-            textPoint.text = "Point:" + points;
+            textPoint.text = "Point: " + points;
         }
     }
 }
